@@ -105,10 +105,10 @@ a{color:inherit;text-decoration:none}
 .hero .names{color:var(--gold-light)}
 
 /* STAT STRIP */
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:40px 0 8px}
-.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 18px;text-align:center}
-.stat .num{font-size:clamp(26px,4vw,40px);font-weight:800;color:var(--gold-light);letter-spacing:-.02em}
-.stat .lbl{font-size:13px;color:var(--muted);margin-top:4px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:32px 0 8px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 12px;text-align:center}
+.stat .num{font-size:clamp(20px,3vw,28px);font-weight:800;color:var(--gold-light);letter-spacing:-.02em}
+.stat .lbl{font-size:11.5px;color:var(--muted);margin-top:3px}
 
 /* BUTTONS */
 .btn{display:inline-block;background:linear-gradient(180deg,var(--gold-light),var(--gold));
@@ -224,7 +224,10 @@ footer p{color:var(--muted);font-size:13px;margin-bottom:6px}
 .step p{color:var(--muted);font-size:14.5px}
 
 @media(max-width:760px){
-  .stats{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(3,1fr);gap:7px;margin-top:24px}
+  .stat{padding:10px 5px;border-radius:10px}
+  .stat .num{font-size:clamp(14px,4.4vw,19px)}
+  .stat .lbl{font-size:9.5px;margin-top:2px;line-height:1.3}
   .steps{grid-template-columns:1fr}
   .mentors{grid-template-columns:1fr}
   .form-card{padding:30px 22px}
