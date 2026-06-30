@@ -126,9 +126,9 @@ section{padding:72px 0}
 /* TRUST / RECLAME AQUI ANSWER */
 .trust{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:34px}
-.trust-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px}
-.trust-card .ic{width:42px;height:42px;border-radius:10px;background:rgba(201,161,74,.12);
-  display:flex;align-items:center;justify-content:center;color:var(--gold-light);font-size:20px;margin-bottom:14px}
+.trust-card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.trust-card .pic{width:100%;height:200px;object-fit:cover;display:block;border-bottom:1px solid var(--line)}
+.trust-card .tc-body{padding:22px 24px 26px}
 .trust-card h3{font-size:18px;margin-bottom:8px}
 .trust-card p{color:var(--muted);font-size:14.5px}
 
@@ -257,10 +257,10 @@ footer p{color:var(--muted);font-size:13px;margin-bottom:6px}
     <h2 class="section-title">Quem são Julia Ottoni e Cleiton Querobin?</h2>
     <p class="lead">Se você chegou aqui pesquisando o nome deles, está no lugar certo. Veja por que centenas de empresários confiam nessa mentoria.</p>
     <div class="trust-grid">
-      <div class="trust-card"><div class="ic">✓</div><h3>Resultados reais</h3><p>Mais de R$50 milhões faturados no último ano com empresários acompanhados de perto.</p></div>
-      <div class="trust-card"><div class="ic">★</div><h3>Selo MLS</h3><p>Membros do Mentoring League Society de Flávio Augusto, uma das maiores sociedades de mentores do país.</p></div>
-      <div class="trust-card"><div class="ic">◆</div><h3>Metodologia validada</h3><p>Estruturação comercial, marketing e métricas aplicadas em odontologia, estética e serviços.</p></div>
-      <div class="trust-card"><div class="ic">♥</div><h3>Acompanhamento de 1 ano</h3><p>Não é curso gravado. É acompanhamento próximo, com plano de ação e revisão de resultados.</p></div>
+      <div class="trust-card"><img class="pic" src="trust-resultados.jpg" alt="Resultados reais" loading="lazy"><div class="tc-body"><h3>Resultados reais</h3><p>Mais de R$50 milhões faturados no último ano com empresários acompanhados de perto.</p></div></div>
+      <div class="trust-card"><img class="pic" src="trust-mls.jpg" alt="Selo MLS" loading="lazy"><div class="tc-body"><h3>Selo MLS</h3><p>Membros do Mentoring League Society de Flávio Augusto, uma das maiores sociedades de mentores do país.</p></div></div>
+      <div class="trust-card"><img class="pic" src="trust-metodologia.jpg" alt="Metodologia validada" loading="lazy"><div class="tc-body"><h3>Metodologia validada</h3><p>Estruturação comercial, marketing e métricas aplicadas em odontologia, estética e serviços.</p></div></div>
+      <div class="trust-card"><img class="pic" src="trust-acompanhamento.jpg" alt="Acompanhamento de 1 ano" loading="lazy"><div class="tc-body"><h3>Acompanhamento de 1 ano</h3><p>Não é curso gravado. É acompanhamento próximo, com plano de ação e revisão de resultados.</p></div></div>
     </div>
   </div>
 </section>
