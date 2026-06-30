@@ -157,6 +157,8 @@ section{padding:72px 0}
 .cslide{min-width:100%;margin:0}
 .cslide .cimg{height:420px;background:linear-gradient(135deg,#1d1d2b,#2a2438);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:15px}
 .cslide img.cimg{width:100%;height:auto;aspect-ratio:2/3;object-fit:cover;display:block;background:none}
+#mlsCarousel{max-width:760px;margin-left:auto;margin-right:auto}
+#mlsCarousel img.cimg{aspect-ratio:1/1}
 .cslide figcaption{background:var(--card);padding:16px 22px;font-size:14px;color:var(--gold-light);border-top:1px solid var(--line)}
 .cbtn{position:absolute;top:42%;transform:translateY(-50%);background:rgba(10,10,15,.7);border:1px solid var(--gold);color:var(--gold-light);width:46px;height:46px;border-radius:50%;font-size:26px;line-height:1;cursor:pointer;transition:.2s;backdrop-filter:blur(4px)}
 .cbtn:hover{background:var(--gold);color:#1a1407}
@@ -340,11 +342,11 @@ footer p{color:var(--muted);font-size:13px;margin-bottom:6px}
     <p class="lead">O <strong>Mentoring League Society (MLS)</strong> é o maior ecossistema de educação empresarial do Brasil, fundado por Flávio Augusto, Caio Carneiro e Joel Jota. Nos últimos 2 anos, alcançou a marca histórica de <strong class="gold">R$1 bilhão</strong> de faturamento.</p>
 
     <div class="carousel" id="mlsCarousel">
-      <div class="carousel-track" id="mlsTrack">
-        <!-- TROCAR cada src abaixo pela foto real (Flávio, Joel, Caio, Cleiton na Nasdaq) -->
-        <figure class="cslide"><div class="cimg">[ FOTO 1 — Nasdaq ]</div><figcaption>Flávio Augusto, Joel Jota, Caio Carneiro e Cleiton — Nasdaq</figcaption></figure>
-        <figure class="cslide"><div class="cimg">[ FOTO 2 ]</div><figcaption>Evento MLS</figcaption></figure>
-        <figure class="cslide"><div class="cimg">[ FOTO 3 ]</div><figcaption>Imersão presencial</figcaption></figure>
+      <div class="carousel-track">
+        <figure class="cslide"><img class="cimg" src="mls-1.jpg" alt="Sócios da Mentoring League Society" loading="lazy"><figcaption>Sócios da Mentoring League Society</figcaption></figure>
+        <figure class="cslide"><img class="cimg" src="mls-2.jpg" alt="Reunião de sócios MLS" loading="lazy"><figcaption>Reunião estratégica de sócios — MLS</figcaption></figure>
+        <figure class="cslide"><img class="cimg" src="mls-3.jpg" alt="Joel Jota, cofundador da MLS" loading="lazy"><figcaption>Joel Jota — cofundador da MLS</figcaption></figure>
+        <figure class="cslide"><img class="cimg" src="mls-4.jpg" alt="MLS — investimento em sede própria" loading="lazy"><figcaption>MLS: R$300 milhões em sede própria de eventos</figcaption></figure>
       </div>
       <button class="cbtn prev" aria-label="Anterior">‹</button>
       <button class="cbtn next" aria-label="Próximo">›</button>
