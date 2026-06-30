@@ -141,6 +141,11 @@ section{padding:72px 0}
 .mentor h3{font-size:23px;color:var(--gold-light);margin-bottom:4px}
 .mentor .role{font-size:13px;color:var(--gold);letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
 .mentor p{color:var(--muted);font-size:15px}
+.mentor-duo{display:grid;grid-template-columns:minmax(0,380px) 1fr;gap:40px;align-items:center;margin-top:40px}
+.duo-body h3{font-size:26px;color:var(--gold-light);margin-bottom:4px}
+.duo-body .role{font-size:13px;color:var(--gold);letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px}
+.duo-body p{color:var(--muted);font-size:15.5px}
+@media(max-width:760px){.mentor-duo{grid-template-columns:1fr;gap:26px}}
 
 /* MLS BLOCK */
 .mls{background:
@@ -151,6 +156,7 @@ section{padding:72px 0}
 .carousel-track{display:flex;transition:transform .45s ease}
 .cslide{min-width:100%;margin:0}
 .cslide .cimg{height:420px;background:linear-gradient(135deg,#1d1d2b,#2a2438);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:15px}
+.cslide img.cimg{width:100%;height:auto;aspect-ratio:2/3;object-fit:cover;display:block;background:none}
 .cslide figcaption{background:var(--card);padding:16px 22px;font-size:14px;color:var(--gold-light);border-top:1px solid var(--line)}
 .cbtn{position:absolute;top:42%;transform:translateY(-50%);background:rgba(10,10,15,.7);border:1px solid var(--gold);color:var(--gold-light);width:46px;height:46px;border-radius:50%;font-size:26px;line-height:1;cursor:pointer;transition:.2s;backdrop-filter:blur(4px)}
 .cbtn:hover{background:var(--gold);color:#1a1407}
@@ -306,22 +312,21 @@ footer p{color:var(--muted);font-size:13px;margin-bottom:6px}
   <div class="wrap">
     <div class="eyebrow">Os Mentores</div>
     <h2 class="section-title">Dois especialistas, uma metodologia</h2>
-    <div class="mentors">
-      <div class="mentor">
-        <div class="photo">[ FOTO JULIA OTTONI ]</div>
-        <div class="body">
-          <h3>Julia Ottoni</h3>
-          <div class="role">Mentora de Negócios · MLS</div>
-          <p>[Bio da Julia: trajetória, especialidade, principais resultados que ela gera para os mentorados. 2 a 3 frases focadas em autoridade e nicho.]</p>
+    <div class="mentor-duo">
+      <div class="carousel">
+        <div class="carousel-track">
+          <figure class="cslide"><img class="cimg" src="mentores-1.jpg" alt="Julia Ottoni e Cleiton Querobin" loading="lazy"></figure>
+          <figure class="cslide"><img class="cimg" src="mentores-2.jpg" alt="Julia Ottoni e Cleiton Querobin" loading="lazy"></figure>
+          <figure class="cslide"><img class="cimg" src="mentores-3.jpg" alt="Julia Ottoni e Cleiton Querobin" loading="lazy"></figure>
         </div>
+        <button class="cbtn prev" aria-label="Anterior">‹</button>
+        <button class="cbtn next" aria-label="Próximo">›</button>
+        <div class="cdots"></div>
       </div>
-      <div class="mentor">
-        <div class="photo">[ FOTO CLEITON QUEROBIN ]</div>
-        <div class="body">
-          <h3>Cleiton Querobin</h3>
-          <div class="role">Mentor de Negócios · MLS</div>
-          <p>[Bio do Cleiton: trajetória, especialidade, principais resultados. 2 a 3 frases focadas em autoridade e nicho.]</p>
-        </div>
+      <div class="duo-body">
+        <h3>Julia Ottoni &amp; Cleiton Querobin</h3>
+        <div class="role">Mentores de Negócios · MLS</div>
+        <p>[Texto da dupla: como vocês se complementam, trajetória juntos, especialidade e principais resultados que geram para os mentorados. 3 a 4 frases focadas em autoridade e na ideia de "uma metodologia".]</p>
       </div>
     </div>
   </div>
@@ -341,9 +346,9 @@ footer p{color:var(--muted);font-size:13px;margin-bottom:6px}
         <figure class="cslide"><div class="cimg">[ FOTO 2 ]</div><figcaption>Evento MLS</figcaption></figure>
         <figure class="cslide"><div class="cimg">[ FOTO 3 ]</div><figcaption>Imersão presencial</figcaption></figure>
       </div>
-      <button class="cbtn prev" onclick="moveCarousel(-1)" aria-label="Anterior">‹</button>
-      <button class="cbtn next" onclick="moveCarousel(1)" aria-label="Próximo">›</button>
-      <div class="cdots" id="mlsDots"></div>
+      <button class="cbtn prev" aria-label="Anterior">‹</button>
+      <button class="cbtn next" aria-label="Próximo">›</button>
+      <div class="cdots"></div>
     </div>
   </div>
 </section>
@@ -441,26 +446,32 @@ footer p{color:var(--muted);font-size:13px;margin-bottom:6px}
 
 <script>
 (function(){
-  var track=document.getElementById('mlsTrack');
-  var slides=track?track.children.length:0;
-  var idx=0;
-  var dotsWrap=document.getElementById('mlsDots');
-  for(var i=0;i<slides;i++){
-    var d=document.createElement('button');
-    d.className='cdot'+(i===0?' on':'');
-    (function(n){d.onclick=function(){idx=n;update();};})(i);
-    dotsWrap.appendChild(d);
+  function initCarousel(root){
+    var track=root.querySelector('.carousel-track');
+    if(!track)return;
+    var slides=track.children.length;
+    var dotsWrap=root.querySelector('.cdots');
+    var idx=0;
+    function update(){
+      track.style.transform='translateX(-'+(idx*100)+'%)';
+      if(dotsWrap){var dots=dotsWrap.children;for(var i=0;i<dots.length;i++)dots[i].className='cdot'+(i===idx?' on':'');}
+    }
+    if(dotsWrap){
+      for(var i=0;i<slides;i++){
+        var d=document.createElement('button');
+        d.className='cdot'+(i===0?' on':'');
+        (function(n){d.onclick=function(){idx=n;update();};})(i);
+        dotsWrap.appendChild(d);
+      }
+    }
+    var prev=root.querySelector('.cbtn.prev');
+    var next=root.querySelector('.cbtn.next');
+    if(prev)prev.onclick=function(){idx=(idx-1+slides)%slides;update();};
+    if(next)next.onclick=function(){idx=(idx+1)%slides;update();};
+    setInterval(function(){if(slides>1){idx=(idx+1)%slides;update();}},5000);
   }
-  window.moveCarousel=function(dir){
-    idx=(idx+dir+slides)%slides;update();
-  };
-  function update(){
-    track.style.transform='translateX(-'+(idx*100)+'%)';
-    var dots=dotsWrap.children;
-    for(var i=0;i<dots.length;i++)dots[i].className='cdot'+(i===idx?' on':'');
-  }
-  // autoplay
-  setInterval(function(){if(slides>1){idx=(idx+1)%slides;update();}},5000);
+  var carousels=document.querySelectorAll('.carousel');
+  for(var i=0;i<carousels.length;i++)initCarousel(carousels[i]);
 })();
 </script>
 
