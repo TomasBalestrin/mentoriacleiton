@@ -210,7 +210,11 @@ section{padding:72px 0}
 .field input:focus,.field select:focus{outline:none;border-color:var(--gold)}
 .form-foot{font-size:12.5px;color:var(--muted);text-align:center;margin-top:16px}
 .form-err{color:#e5736b;font-size:13.5px;text-align:center;margin-top:14px}
-.form-success{text-align:center;padding:20px 6px 6px}
+.form-success{position:relative;text-align:center;padding:20px 6px 6px}
+.form-success .fs-close{position:absolute;top:-6px;right:-6px;width:34px;height:34px;border-radius:50%;
+  background:transparent;border:1px solid var(--line);color:var(--muted);font-size:22px;line-height:1;cursor:pointer;transition:.2s}
+.form-success .fs-close:hover{color:var(--ink);border-color:var(--gold)}
+.form-success .btn{margin-top:22px}
 .form-success .fs-ic{width:60px;height:60px;border-radius:50%;background:rgba(31,138,76,.15);color:#3fce7f;
   display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 16px;border:1px solid rgba(63,206,127,.4)}
 .form-success h3{font-size:22px;color:var(--gold-light);margin-bottom:8px}
@@ -506,9 +510,11 @@ footer p{color:var(--muted);font-size:13px;margin-bottom:6px}
       </form>
       <p class="form-foot">🔒 Seus dados estão seguros e não serão compartilhados.</p>
       <div class="form-success" id="leadSuccess" hidden>
+        <button type="button" class="fs-close" id="leadClose" aria-label="Fechar">×</button>
         <div class="fs-ic">✓</div>
         <h3>Recebemos seus dados!</h3>
         <p>Nosso time vai entrar em contato pelo WhatsApp para entender seu momento. Fique de olho no seu telefone.</p>
+        <button type="button" class="btn" id="leadReset">Enviar outro</button>
       </div>
     </div>
   </div>
@@ -623,6 +629,20 @@ footer p{color:var(--muted);font-size:13px;margin-bottom:6px}
     if(footEl)footEl.hidden=true;
     if(successEl){successEl.hidden=false;successEl.scrollIntoView({behavior:'smooth',block:'center'});}
   }
+
+  function resetForm(){
+    if(successEl)successEl.hidden=true;
+    form.reset();
+    form.hidden=false;
+    if(footEl)footEl.hidden=false;
+    if(errEl)errEl.hidden=true;
+    btn.disabled=false;
+    btn.textContent='Quero minha sessão estratégica';
+  }
+  var closeBtn=document.getElementById('leadClose');
+  var resetBtn=document.getElementById('leadReset');
+  if(closeBtn)closeBtn.addEventListener('click',resetForm);
+  if(resetBtn)resetBtn.addEventListener('click',resetForm);
 })();
 </script>
 
