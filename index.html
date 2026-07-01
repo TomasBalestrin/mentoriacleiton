@@ -514,7 +514,6 @@ footer p{color:var(--muted);font-size:13px;margin-bottom:6px}
         <div class="fs-ic">✓</div>
         <h3>Recebemos seus dados!</h3>
         <p>Nosso time vai entrar em contato pelo WhatsApp para entender seu momento. Fique de olho no seu telefone.</p>
-        <button type="button" class="btn" id="leadReset">Enviar outro</button>
       </div>
     </div>
   </div>
@@ -593,6 +592,8 @@ footer p{color:var(--muted);font-size:13px;margin-bottom:6px}
   var errEl=document.getElementById('leadError');
   var successEl=document.getElementById('leadSuccess');
   var footEl=document.querySelector('.form-card .form-foot');
+  var titleEl=document.querySelector('.form-card h2');
+  var subEl=document.querySelector('.form-card .fsub');
 
   form.addEventListener('submit',function(ev){
     ev.preventDefault();
@@ -627,6 +628,8 @@ footer p{color:var(--muted);font-size:13px;margin-bottom:6px}
   function showSuccess(){
     form.hidden=true;
     if(footEl)footEl.hidden=true;
+    if(titleEl)titleEl.hidden=true;
+    if(subEl)subEl.hidden=true;
     if(successEl){successEl.hidden=false;successEl.scrollIntoView({behavior:'smooth',block:'center'});}
   }
 
@@ -635,14 +638,14 @@ footer p{color:var(--muted);font-size:13px;margin-bottom:6px}
     form.reset();
     form.hidden=false;
     if(footEl)footEl.hidden=false;
+    if(titleEl)titleEl.hidden=false;
+    if(subEl)subEl.hidden=false;
     if(errEl)errEl.hidden=true;
     btn.disabled=false;
     btn.textContent='Quero minha sessão estratégica';
   }
   var closeBtn=document.getElementById('leadClose');
-  var resetBtn=document.getElementById('leadReset');
   if(closeBtn)closeBtn.addEventListener('click',resetForm);
-  if(resetBtn)resetBtn.addEventListener('click',resetForm);
 })();
 </script>
 
