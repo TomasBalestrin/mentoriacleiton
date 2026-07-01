@@ -177,7 +177,7 @@ section{padding:72px 0}
   display:flex;align-items:center;justify-content:center;font-weight:800;color:#1a1407}
 .testi .who .nm{font-weight:700;font-size:14.5px}
 .testi .who .seg{font-size:12.5px;color:var(--muted)}
-.video-grid{display:grid;grid-template-columns:1fr;gap:24px;margin:40px auto 0;max-width:760px}
+.video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin:40px auto 0;max-width:860px}
 .video-item{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;padding:8px}
 
 /* OFFER */
@@ -258,6 +258,13 @@ footer p{color:var(--muted);font-size:13px;margin-bottom:6px}
   s.src="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js";
   s.async=!0;
   document.head.appendChild(s);
+</script>
+<!-- player especifico do 3o video (web component vturb-smartplayer) -->
+<script type="text/javascript">
+  var sp=document.createElement("script");
+  sp.src="https://scripts.converteai.net/60c57e38-903d-4b8c-afdb-955793042b17/players/6a450e8a0350303b506b0333/v4/player.js";
+  sp.async=!0;
+  document.head.appendChild(sp);
 </script>
 </head>
 <body>
@@ -383,6 +390,23 @@ footer p{color:var(--muted);font-size:13px;margin-bottom:6px}
         <div id="ifr_69cbd08e953ef32c144f2623_wrapper" style="margin: 0 auto; width: 100%;">
           <div style="position: relative; padding: 56.25% 0 0 0;" id="ifr_69cbd08e953ef32c144f2623_aspect">
             <iframe frameborder="0" allowfullscreen src="about:blank" id="ifr_69cbd08e953ef32c144f2623" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" referrerpolicy="origin" onload=" this.onload=null, this.src='https://scripts.converteai.net/60c57e38-903d-4b8c-afdb-955793042b17/players/69cbd08e953ef32c144f2623/v4/embed.html' +(location.search||'?') +'&vl=' +encodeURIComponent(location.href)"></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="video-item">
+        <div id="ifr_6a450dd6cad1226293846d32_wrapper" style="margin: 0 auto; width: 100%;">
+          <div style="position: relative; padding: 56.25% 0 0 0;" id="ifr_6a450dd6cad1226293846d32_aspect">
+            <iframe frameborder="0" allowfullscreen src="about:blank" id="ifr_6a450dd6cad1226293846d32" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" referrerpolicy="origin" onload=" this.onload=null, this.src='https://scripts.converteai.net/60c57e38-903d-4b8c-afdb-955793042b17/players/6a450dd6cad1226293846d32/v4/embed.html' +(location.search||'?') +'&vl=' +encodeURIComponent(location.href)"></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="video-item">
+        <vturb-smartplayer id="vid-6a450e8a0350303b506b0333" style="display: block; margin: 0 auto; width: 100%;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 56.25% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>
+      </div>
+      <div class="video-item">
+        <div id="ifr_6a450ed5dddf45a7737a7ef7_wrapper" style="margin: 0 auto; width: 100%;">
+          <div style="position: relative; padding: 56.25% 0 0 0;" id="ifr_6a450ed5dddf45a7737a7ef7_aspect">
+            <iframe frameborder="0" allowfullscreen src="about:blank" id="ifr_6a450ed5dddf45a7737a7ef7" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" referrerpolicy="origin" onload=" this.onload=null, this.src='https://scripts.converteai.net/60c57e38-903d-4b8c-afdb-955793042b17/players/6a450ed5dddf45a7737a7ef7/v4/embed.html' +(location.search||'?') +'&vl=' +encodeURIComponent(location.href)"></iframe>
           </div>
         </div>
       </div>
