@@ -209,6 +209,12 @@ section{padding:72px 0}
   border-radius:10px;padding:14px 16px;color:var(--ink);font-size:15px;font-family:inherit}
 .field input:focus,.field select:focus{outline:none;border-color:var(--gold)}
 .form-foot{font-size:12.5px;color:var(--muted);text-align:center;margin-top:16px}
+.form-err{color:#e5736b;font-size:13.5px;text-align:center;margin-top:14px}
+.form-success{text-align:center;padding:20px 6px 6px}
+.form-success .fs-ic{width:60px;height:60px;border-radius:50%;background:rgba(31,138,76,.15);color:#3fce7f;
+  display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 16px;border:1px solid rgba(63,206,127,.4)}
+.form-success h3{font-size:22px;color:var(--gold-light);margin-bottom:8px}
+.form-success p{color:var(--muted);font-size:15px;max-width:420px;margin:0 auto}
 
 /* FAQ */
 .faq details{background:var(--card);border:1px solid var(--line);border-radius:12px;
@@ -455,8 +461,7 @@ footer p{color:var(--muted);font-size:13px;margin-bottom:6px}
       <h2>Agende sua Sessão Estratégica</h2>
       <p class="fsub">Preencha os dados abaixo. Nosso time entra em contato para entender seu momento e verificar se a mentoria faz sentido para você.</p>
 
-      <!-- TROQUE A AÇÃO ABAIXO pelo SEU endpoint do Formspree -->
-      <form action="https://formspree.io/f/SEU_ID_AQUI" method="POST">
+      <form id="leadForm" novalidate>
         <div class="field">
           <label for="nome">Nome completo</label>
           <input type="text" id="nome" name="nome" required placeholder="Seu nome">
@@ -494,13 +499,17 @@ footer p{color:var(--muted);font-size:13px;margin-bottom:6px}
             <option>Acima de R$100 mil</option>
           </select>
         </div>
-        <!-- honeypot anti-spam -->
-        <input type="text" name="_gotcha" style="display:none">
-        <!-- assunto do e-mail -->
-        <input type="hidden" name="_subject" value="Novo lead - Sessão Estratégica (Site Julia & Cleiton)">
-        <button type="submit" class="btn btn-block">Quero minha sessão estratégica</button>
+        <!-- honeypot anti-spam (nao preencher) -->
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+        <button type="submit" class="btn btn-block" id="leadSubmit">Quero minha sessão estratégica</button>
+        <p class="form-err" id="leadError" hidden>Não foi possível enviar agora. Tente novamente em instantes.</p>
       </form>
       <p class="form-foot">🔒 Seus dados estão seguros e não serão compartilhados.</p>
+      <div class="form-success" id="leadSuccess" hidden>
+        <div class="fs-ic">✓</div>
+        <h3>Recebemos seus dados!</h3>
+        <p>Nosso time vai entrar em contato pelo WhatsApp para entender seu momento. Fique de olho no seu telefone.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -565,6 +574,55 @@ footer p{color:var(--muted);font-size:13px;margin-bottom:6px}
       item.replaceChildren(tpl.content.cloneNode(true));
     });
   });
+})();
+
+// Envio do formulario -> Google Apps Script (planilha) + evento GTM
+(function(){
+  // >>> COLE AQUI a URL /exec do seu Google Apps Script (Implantar como App da Web) <<<
+  var ENDPOINT='https://script.google.com/macros/s/SEU_ID_DO_APPS_SCRIPT/exec';
+
+  var form=document.getElementById('leadForm');
+  if(!form)return;
+  var btn=document.getElementById('leadSubmit');
+  var errEl=document.getElementById('leadError');
+  var successEl=document.getElementById('leadSuccess');
+  var footEl=document.querySelector('.form-card .form-foot');
+
+  form.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    if(errEl)errEl.hidden=true;
+
+    // honeypot: se preenchido, e' bot -> finge sucesso e nao envia
+    if(form._gotcha && form._gotcha.value){showSuccess();return;}
+
+    if(!form.checkValidity()){form.reportValidity();return;}
+
+    var data=new URLSearchParams(new FormData(form));
+    data.append('pagina',location.href);
+
+    btn.disabled=true;
+    var original=btn.textContent;
+    btn.textContent='Enviando...';
+
+    fetch(ENDPOINT,{method:'POST',mode:'no-cors',body:data})
+      .then(function(){
+        // dispara evento para o Google Tag Manager
+        window.dataLayer=window.dataLayer||[];
+        window.dataLayer.push({event:'lead_submit',form:'sessao_estrategica'});
+        showSuccess();
+      })
+      .catch(function(){
+        btn.disabled=false;
+        btn.textContent=original;
+        if(errEl)errEl.hidden=false;
+      });
+  });
+
+  function showSuccess(){
+    form.hidden=true;
+    if(footEl)footEl.hidden=true;
+    if(successEl){successEl.hidden=false;successEl.scrollIntoView({behavior:'smooth',block:'center'});}
+  }
 })();
 </script>
 
