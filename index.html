@@ -181,6 +181,13 @@ section{padding:72px 0}
 .testi .who .seg{font-size:12.5px;color:var(--muted)}
 .video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin:40px auto 0;max-width:860px}
 .video-item{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;padding:8px}
+.video-facade{position:relative;width:100%;aspect-ratio:16/9;border:none;cursor:pointer;border-radius:10px;
+  background:radial-gradient(120% 120% at 50% 0%,rgba(201,161,74,.14),transparent 60%),linear-gradient(135deg,#1d1d2b,#12121c);
+  display:flex;align-items:center;justify-content:center}
+.video-facade .play-btn{width:66px;height:66px;border-radius:50%;background:rgba(232,205,134,.95);color:#1a1407;
+  display:flex;align-items:center;justify-content:center;font-size:24px;padding-left:5px;
+  box-shadow:0 10px 34px rgba(201,161,74,.35);transition:transform .2s,background .2s}
+.video-facade:hover .play-btn{transform:scale(1.09);background:var(--gold-light)}
 
 /* OFFER */
 .offer{background:var(--bg-2);border-top:1px solid var(--line)}
@@ -255,20 +262,6 @@ footer p{color:var(--muted);font-size:13px;margin-bottom:6px}
   .form-card{padding:30px 22px}
 }
 </style>
-<!-- SDK vturb / SmartPlayer -->
-<script type="text/javascript">
-  var s=document.createElement("script");
-  s.src="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js";
-  s.async=!0;
-  document.head.appendChild(s);
-</script>
-<!-- player especifico do 3o video (web component vturb-smartplayer) -->
-<script type="text/javascript">
-  var sp=document.createElement("script");
-  sp.src="https://scripts.converteai.net/60c57e38-903d-4b8c-afdb-955793042b17/players/6a450e8a0350303b506b0333/v4/player.js";
-  sp.async=!0;
-  document.head.appendChild(sp);
-</script>
 </head>
 <body>
 
@@ -292,28 +285,40 @@ footer p{color:var(--muted);font-size:13px;margin-bottom:6px}
     <h2 class="section-title">Alguns de nossos cases de sucesso</h2>
     <div class="video-grid">
       <div class="video-item">
-        <div id="ifr_69cbd08e953ef32c144f2623_wrapper" style="margin: 0 auto; width: 100%;">
-          <div style="position: relative; padding: 56.25% 0 0 0;" id="ifr_69cbd08e953ef32c144f2623_aspect">
-            <iframe frameborder="0" allowfullscreen src="about:blank" id="ifr_69cbd08e953ef32c144f2623" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" referrerpolicy="origin" onload=" this.onload=null, this.src='https://scripts.converteai.net/60c57e38-903d-4b8c-afdb-955793042b17/players/69cbd08e953ef32c144f2623/v4/embed.html' +(location.search||'?') +'&vl=' +encodeURIComponent(location.href)"></iframe>
+        <button class="video-facade" aria-label="Assistir depoimento"><span class="play-btn">▶</span></button>
+        <template>
+          <div id="ifr_69cbd08e953ef32c144f2623_wrapper" style="margin: 0 auto; width: 100%;">
+            <div style="position: relative; padding: 56.25% 0 0 0;" id="ifr_69cbd08e953ef32c144f2623_aspect">
+              <iframe frameborder="0" allowfullscreen src="about:blank" id="ifr_69cbd08e953ef32c144f2623" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" referrerpolicy="origin" onload=" this.onload=null, this.src='https://scripts.converteai.net/60c57e38-903d-4b8c-afdb-955793042b17/players/69cbd08e953ef32c144f2623/v4/embed.html' +(location.search||'?') +'&vl=' +encodeURIComponent(location.href)"></iframe>
+            </div>
           </div>
-        </div>
+        </template>
       </div>
       <div class="video-item">
-        <div id="ifr_6a450dd6cad1226293846d32_wrapper" style="margin: 0 auto; width: 100%;">
-          <div style="position: relative; padding: 56.25% 0 0 0;" id="ifr_6a450dd6cad1226293846d32_aspect">
-            <iframe frameborder="0" allowfullscreen src="about:blank" id="ifr_6a450dd6cad1226293846d32" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" referrerpolicy="origin" onload=" this.onload=null, this.src='https://scripts.converteai.net/60c57e38-903d-4b8c-afdb-955793042b17/players/6a450dd6cad1226293846d32/v4/embed.html' +(location.search||'?') +'&vl=' +encodeURIComponent(location.href)"></iframe>
+        <button class="video-facade" aria-label="Assistir depoimento"><span class="play-btn">▶</span></button>
+        <template>
+          <div id="ifr_6a450dd6cad1226293846d32_wrapper" style="margin: 0 auto; width: 100%;">
+            <div style="position: relative; padding: 56.25% 0 0 0;" id="ifr_6a450dd6cad1226293846d32_aspect">
+              <iframe frameborder="0" allowfullscreen src="about:blank" id="ifr_6a450dd6cad1226293846d32" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" referrerpolicy="origin" onload=" this.onload=null, this.src='https://scripts.converteai.net/60c57e38-903d-4b8c-afdb-955793042b17/players/6a450dd6cad1226293846d32/v4/embed.html' +(location.search||'?') +'&vl=' +encodeURIComponent(location.href)"></iframe>
+            </div>
           </div>
-        </div>
+        </template>
       </div>
       <div class="video-item">
-        <vturb-smartplayer id="vid-6a450e8a0350303b506b0333" style="display: block; margin: 0 auto; width: 100%;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 56.25% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>
+        <button class="video-facade" data-player="https://scripts.converteai.net/60c57e38-903d-4b8c-afdb-955793042b17/players/6a450e8a0350303b506b0333/v4/player.js" aria-label="Assistir depoimento"><span class="play-btn">▶</span></button>
+        <template>
+          <vturb-smartplayer id="vid-6a450e8a0350303b506b0333" style="display: block; margin: 0 auto; width: 100%;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 56.25% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>
+        </template>
       </div>
       <div class="video-item">
-        <div id="ifr_6a450ed5dddf45a7737a7ef7_wrapper" style="margin: 0 auto; width: 100%;">
-          <div style="position: relative; padding: 56.25% 0 0 0;" id="ifr_6a450ed5dddf45a7737a7ef7_aspect">
-            <iframe frameborder="0" allowfullscreen src="about:blank" id="ifr_6a450ed5dddf45a7737a7ef7" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" referrerpolicy="origin" onload=" this.onload=null, this.src='https://scripts.converteai.net/60c57e38-903d-4b8c-afdb-955793042b17/players/6a450ed5dddf45a7737a7ef7/v4/embed.html' +(location.search||'?') +'&vl=' +encodeURIComponent(location.href)"></iframe>
+        <button class="video-facade" aria-label="Assistir depoimento"><span class="play-btn">▶</span></button>
+        <template>
+          <div id="ifr_6a450ed5dddf45a7737a7ef7_wrapper" style="margin: 0 auto; width: 100%;">
+            <div style="position: relative; padding: 56.25% 0 0 0;" id="ifr_6a450ed5dddf45a7737a7ef7_aspect">
+              <iframe frameborder="0" allowfullscreen src="about:blank" id="ifr_6a450ed5dddf45a7737a7ef7" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" referrerpolicy="origin" onload=" this.onload=null, this.src='https://scripts.converteai.net/60c57e38-903d-4b8c-afdb-955793042b17/players/6a450ed5dddf45a7737a7ef7/v4/embed.html' +(location.search||'?') +'&vl=' +encodeURIComponent(location.href)"></iframe>
+            </div>
           </div>
-        </div>
+        </template>
       </div>
     </div>
   </div>
@@ -536,6 +541,30 @@ footer p{color:var(--muted);font-size:13px;margin-bottom:6px}
   }
   var carousels=document.querySelectorAll('.carousel');
   for(var i=0;i<carousels.length;i++)initCarousel(carousels[i]);
+})();
+
+// Click-to-play dos videos de depoimento (carrega o vturb so no clique)
+(function(){
+  var loaded={};
+  function loadScriptOnce(src){
+    if(loaded[src])return;
+    loaded[src]=true;
+    var sc=document.createElement('script');
+    sc.src=src;sc.async=true;
+    document.head.appendChild(sc);
+  }
+  var SDK='https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js';
+  document.querySelectorAll('.video-facade').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var item=btn.closest('.video-item');
+      var tpl=item.querySelector('template');
+      if(!tpl)return;
+      loadScriptOnce(SDK);
+      var pj=btn.getAttribute('data-player');
+      if(pj)loadScriptOnce(pj);
+      item.replaceChildren(tpl.content.cloneNode(true));
+    });
+  });
 })();
 </script>
 
