@@ -227,7 +227,8 @@ footer p{color:var(--muted);font-size:13px;margin-bottom:6px}
 .pain-list .x{color:var(--gold-light);font-weight:900;flex-shrink:0;font-size:18px}
 .pain .turn{font-size:20px;color:var(--ink);max-width:700px;margin-bottom:6px;font-weight:600}
 .pain .turn b{color:var(--gold-light)}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:34px}
+.steps-title{font-size:clamp(24px,3.4vw,34px);text-align:center;margin-top:60px}
 .step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px 24px;position:relative}
 .step.active{border-color:var(--gold);background:radial-gradient(400px 200px at 50% 0%,rgba(201,161,74,.10),transparent 70%),var(--card)}
 .step .nb{font-size:14px;font-weight:800;color:var(--gold);letter-spacing:.1em}
@@ -370,21 +371,27 @@ footer p{color:var(--muted);font-size:13px;margin-bottom:6px}
     <p class="turn">Enquanto você não acertar seu modelo de negócio, não tiver múltiplos canais de aquisição de clientes e estiver sem um processo comercial claro, a tendência é perder espaço no seu mercado, porque: <b>ou seu negócio está crescendo, ou está fadado a quebrar.</b></p>
     <p class="pintro">Você não precisa trabalhar mais, você precisa trabalhar com estratégia.</p>
 
+    <h2 class="steps-title">A construção de uma <span class="gold">máquina previsível</span></h2>
     <div class="steps">
-      <div class="step active">
-        <span class="nb">01</span><span class="here">Você está aqui</span>
-        <h3>Diagnóstico</h3>
-        <p>Entender de onde vem cada real do seu faturamento e ganhar critério pra decidir antes de gastar com curso, equipamento ou tráfego.</p>
+      <div class="step">
+        <span class="nb">01</span>
+        <h3>A coleta do dinheiro da mesa</h3>
+        <p>Os clientes já chegam até você, mas você esquece dos antigos. Por conta disso, vende serviços baratos e deixa de ofertar os mais caros, deixando muito dinheiro na mesa.</p>
       </div>
       <div class="step">
         <span class="nb">02</span>
-        <h3>Estruturação</h3>
-        <p>Definir o paciente certo, o preço certo e um processo de captação que não depende de você lembrar de postar. O sistema que sustenta agenda cheia.</p>
+        <h3>Estruturação de modelo</h3>
+        <p>Analisar seu preço de forma estratégica (sem achismos) e criar novas ofertas, com uma oferta de alto valor nítida para ser ofertada todos os dias.</p>
       </div>
       <div class="step">
         <span class="nb">03</span>
-        <h3>Otimização</h3>
-        <p>Acompanhar o número de cada etapa — do anúncio à cadeira — pra ajustar o que vaza e escalar o que já enche a agenda.</p>
+        <h3>Processo comercial</h3>
+        <p>Cada cliente que entra na base segue o mesmo acompanhamento, com clareza em cada fase da negociação e a certeza do fechamento.</p>
+      </div>
+      <div class="step">
+        <span class="nb">04</span>
+        <h3>Sucesso do cliente</h3>
+        <p>Uma estrutura que te dá liberdade na operação, para você crescer seu faturamento sem precisar trabalhar mais horas.</p>
       </div>
     </div>
   </div>
